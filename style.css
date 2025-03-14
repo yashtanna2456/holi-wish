@@ -1,0 +1,83 @@
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% { 
+    transform: scale(1);
+  }
+}
+
+.android-medium-1,
+.android-medium-1 * {
+  box-sizing: border-box;
+}
+.happy-holi {
+  animation: pulse 1.5s infinite;
+  background: linear-gradient(
+    183.84deg,
+    rgba(254, 3, 3, 1) 29.599976539611816%,
+    rgba(129, 250, 28, 1) 32.099974155426025%,
+    rgba(255, 247, 7, 1) 56.07997179031372%,
+    rgba(60, 17, 249, 1) 86.09997630119324%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-family: "IrishGrover-Regular", sans-serif;
+  font-size: 128px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-text-stroke: 1px #2b06ff;
+}
+.android-medium-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height to center vertically */
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.color-1 {
+  width: 962px;
+  height: 1111px;
+  position: absolute;
+  left: -145px;
+  top: 1094px;
+  transform: translate(145px, -1094px);
+  overflow: visible;
+  object-fit: cover;
+  aspect-ratio: 962/1111;
+}
+.happy-holi {
+  background: linear-gradient(
+    183.84deg,
+    rgba(254, 3, 3, 1) 29.599976539611816%,
+    rgba(129, 250, 28, 1) 32.099974155426025%,
+    rgba(255, 247, 7, 1) 56.07997179031372%,
+    rgba(60, 17, 249, 1) 86.09997630119324%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-family: "IrishGrover-Regular", sans-serif;
+  font-size: 128px;
+  font-weight: 400;
+  position: absolute;
+  left: 0px;
+  top: 206px;
+  width: 671px;
+  height: 696px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-text-stroke: 1px #2b06ff;
+}
