@@ -42,6 +42,52 @@
     <div class="happy-holi">Happy Holi</div>
   </div>
       <a href="AndroidMedium1.html"><button type="button">Next Page</button> </a>
+  /* Holi colors animation */
+   @keyframes holiColors {
+       0% { color: red; }
+       25% { color: yellow; }
+       50% { color: green; }
+       75% { color: blue; }
+       100% { color: purple; }
+   }
+
+   /* Input field */
+   .input-box {
+       margin-top: 20px;
+       padding: 12px;
+       font-size: 18px;
+       border-radius: 8px;
+       border: 2px solid white;
+       text-align: center;
+       width: 250px;
+       background-color: rgba(255, 255, 255, 0.2);
+       color: white;
+   }
+
+   /* Placeholder styling */
+   .input-box::placeholder {
+       color: rgba(255, 255, 255, 0.7);
+   }
+
+   /* Next Page Button */
+   .next-button {
+       margin-top: 20px;
+       font-size: 20px;
+       padding: 15px 30px;
+       background: linear-gradient(to right, red, yellow, green, blue, purple);
+       color: white;
+       border: none;
+       border-radius: 10px;
+       cursor: pointer;
+       font-weight: bold;
+       text-transform: uppercase;
+       transition: transform 0.2s, box-shadow 0.2s;
+   }
+
+   .next-button:hover {
+       transform: scale(1.1);
+       box-shadow: 0 4px 10px rgba(255, 255, 255, 0.7);
+   }
   <script>
     document.body.addEventListener('click', function(e) {
       const burst = document.createElement('div');
