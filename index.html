@@ -2,114 +2,167 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Holi</title>
   <link rel="stylesheet" href="./vars.css">
   <link rel="stylesheet" href="./style.css">
   
   <style>
-   a,
-   button,
-   input,
-   select,
-   h1,
-   h2,
-   h3,
-   h4,
-   h5,
-   * {
-       box-sizing: border-box;
-       margin: 0;
-       padding: 0;
-       border: none;
-       text-decoration: none;
-       background: none;
-       -webkit-font-smoothing: antialiased;
-   }
-   
-   menu, ol, ul {
-       list-style-type: none;
-       margin: 0;
-       padding: 0;
-   }
-   </style>
-  <title>Document</title>
+    /* Reset Styles */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+        text-decoration: none;
+        background: none;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* 🌈 Full Page Background */
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url('color.jpg'); /* Background Image */
+        background-size: cover;
+        background-position: center;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* 🎨 Container for Text & Button */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; /* Space between text and button */
+    }
+
+    /* 🎉 Happy Holi Text */
+    .happy-holi {
+        font-size: 100px;
+        font-weight: bold;
+        text-transform: uppercase;
+        background-image: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
+        background-size: 200% 100%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        animation: paintBrush 4s infinite linear, sparkleGlow 2s infinite alternate;
+    
+
+/* Adjust position to move right */
+      position: absolute;
+      top: 40%;  /* Adjust vertical alignment */
+      left: 48%; /* Moves it slightly right */
+      transform: translateX(-40%) translateY(-50%); /* Adjust centering */
+    }
+    /* 🌈 Text Animation */
+    @keyframes paintBrush {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 200% 50%; }
+    }
+
+    @keyframes sparkleGlow {
+        0% { text-shadow: 0 0 10px red, 0 0 20px yellow, 0 0 30px green; }
+        50% { text-shadow: 0 0 15px white, 0 0 25px purple, 0 0 35px orange; }
+        100% { text-shadow: 0 0 10px red, 0 0 20px yellow, 0 0 30px green; }
+    }
+
+    /* 🎆 Color Burst Effect */
+    .color-splash {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 1;
+    pointer-events: none; /* Ensure clicks pass through */
+}
+
+    
+
+    /* 🌊 Color Splash Animation */
+    @keyframes splashExpand {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(3); opacity: 0; }
+    }
+
+    /* 🖱️ Clickable Button */
+    .next-button {
+    font-size: 30px;
+    padding: 20px 40px;
+    background: linear-gradient(to right, red, yellow, green, blue, purple);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    /* Ensure it appears above everything */
+    position: relative;
+    z-index: 10;
+}
+
+.next-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.7);
+}
+
+  </style>
 </head>
 <body>
-  <div class="android-medium-1">
- 
-    <img class="color-1" src="color.jpg" />
-    <div class="happy-holi">Happy Holi</div>
-  </div>
-      <a href="AndroidMedium1.html"><button type="button">Next Page</button> </a>
-  /* Holi colors animation */
-   @keyframes holiColors {
-       0% { color: red; }
-       25% { color: yellow; }
-       50% { color: green; }
-       75% { color: blue; }
-       100% { color: purple; }
-   }
 
-   /* Input field */
-   .input-box {
-       margin-top: 20px;
-       padding: 12px;
-       font-size: 18px;
-       border-radius: 8px;
-       border: 2px solid white;
-       text-align: center;
-       width: 250px;
-       background-color: rgba(255, 255, 255, 0.2);
-       color: white;
-   }
+    <div class="container">
+        <div class="happy-holi">Happy Holi</div>
+        <a href="AndroidMedium1.html">
+            <button class="next-button">Message For You</button>
+        </a>
+    </div>
 
-   /* Placeholder styling */
-   .input-box::placeholder {
-       color: rgba(255, 255, 255, 0.7);
-   }
+    <script>
+        document.body.addEventListener('click', function(e) {
+    for (let i = 0; i < 15; i++) { // Create multiple particles
+        const splash = document.createElement('div');
+        splash.className = 'color-splash';
 
-   /* Next Page Button */
-   .next-button {
-       margin-top: 20px;
-       font-size: 20px;
-       padding: 15px 30px;
-       background: linear-gradient(to right, red, yellow, green, blue, purple);
-       color: white;
-       border: none;
-       border-radius: 10px;
-       cursor: pointer;
-       font-weight: bold;
-       text-transform: uppercase;
-       transition: transform 0.2s, box-shadow 0.2s;
-   }
+        let randomSize = Math.floor(Math.random() * 20) + 10; // Random size for variation
+        let randomX = (Math.random() - 0.5) * 300; // Spread horizontally
+        let randomY = (Math.random() - 0.5) * 300; // Spread vertically
+        let randomColor = `hsl(${Math.random() * 360}, 100%, 50%)`; // Random bright colors
 
-   .next-button:hover {
-       transform: scale(1.1);
-       box-shadow: 0 4px 10px rgba(255, 255, 255, 0.7);
-   }
-  <script>
-    document.body.addEventListener('click', function(e) {
-      const burst = document.createElement('div');
-      burst.className = 'color-burst';
-      burst.style.position = 'absolute';
-      burst.style.width = '100px';
-      burst.style.height = '100px';
-      burst.style.borderRadius = '50%';
-      burst.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
-      burst.style.left = (e.clientX - 50) + 'px';
-      burst.style.top = (e.clientY - 50) + 'px';
-      document.body.appendChild(burst);
-      
-      setTimeout(() => {
-        burst.style.transform = 'scale(3)';
-        burst.style.opacity = '0';
-      }, 10);
-      
-      setTimeout(() => {
-        document.body.removeChild(burst);
-      }, 1000);
-    });
-  </script>
+        splash.style.width = `${randomSize}px`;
+        splash.style.height = `${randomSize}px`;
+        splash.style.backgroundColor = randomColor;
+        splash.style.left = `${e.clientX}px`;
+        splash.style.top = `${e.clientY}px`;
+
+        document.body.appendChild(splash);
+
+        // Animate splash movement
+        splash.animate([
+            { transform: `translate(0, 0) scale(1)`, opacity: 1 },
+            { transform: `translate(${randomX}px, ${randomY}px) scale(3)`, opacity: 0 }
+        ], {
+            duration: 1000,
+            easing: 'ease-out',
+            fill: 'forwards'
+        });
+
+        // Remove splash after animation
+        setTimeout(() => {
+            splash.remove();
+        }, 1000);
+    }
+});
+
+    </script>
+
 </body>
 </html>
