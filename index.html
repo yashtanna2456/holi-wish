@@ -1,167 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Holi</title>
-  <link rel="stylesheet" href="./vars.css">
-  <link rel="stylesheet" href="./style.css">
-  
-  <style>
-    /* Reset Styles */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        border: none;
-        text-decoration: none;
-        background: none;
-        -webkit-font-smoothing: antialiased;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Holi Fireworks</title>
 
-    /* 🌈 Full Page Background */
-    body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-image: url('color.jpg'); /* Background Image */
-        background-size: cover;
-        background-position: center;
-        color: white;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        overflow: hidden;
-        position: relative;
-    }
+    <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* 🎨 Container for Text & Button */
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 30px; /* Space between text and button */
-    }
+        /* 🌈 Full Page Background */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('color.jpg'); /* Holi Background */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
 
-    /* 🎉 Happy Holi Text */
-    .happy-holi {
-        font-size: 100px;
-        font-weight: bold;
-        text-transform: uppercase;
-        background-image: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
-        background-size: 200% 100%;
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        -webkit-text-fill-color: transparent;
-        animation: paintBrush 4s infinite linear, sparkleGlow 2s infinite alternate;
-    
+        /* 🎆 Container to keep Text & Button aligned */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* Space between text & button */
+            position: relative;
+            z-index: 5;
+        }
 
-/* Adjust position to move right */
-      position: absolute;
-      top: 40%;  /* Adjust vertical alignment */
-      left: 48%; /* Moves it slightly right */
-      transform: translateX(-40%) translateY(-50%); /* Adjust centering */
-    }
-    /* 🌈 Text Animation */
-    @keyframes paintBrush {
-        0% { background-position: 0% 50%; }
-        100% { background-position: 200% 50%; }
-    }
+        /* 🌟 Animated Holi Message */
+        .happy-holi {
+            font-size: 80px;
+            font-weight: bold;
+            text-transform: uppercase;
+            background-image: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
+            background-size: 200% 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            animation: paintBrush 4s infinite linear, glowEffect 1.5s infinite alternate;
+        }
 
-    @keyframes sparkleGlow {
-        0% { text-shadow: 0 0 10px red, 0 0 20px yellow, 0 0 30px green; }
-        50% { text-shadow: 0 0 15px white, 0 0 25px purple, 0 0 35px orange; }
-        100% { text-shadow: 0 0 10px red, 0 0 20px yellow, 0 0 30px green; }
-    }
+        /* 🌈 Text Animation */
+        @keyframes paintBrush {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
 
-    /* 🎆 Color Burst Effect */
-    .color-splash {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 1;
-    pointer-events: none; /* Ensure clicks pass through */
-}
+        @keyframes glowEffect {
+            0% { text-shadow: 0 0 3px rgba(255, 255, 255, 0.5); }
+            100% { text-shadow: 0 0 8px rgba(255, 255, 255, 0.9); }
+        }
 
-    
+        /* 🖱️ Clickable Button */
+        .next-button {
+            font-size: 25px;
+            padding: 15px 30px;
+            background: linear-gradient(to right, red, yellow, green, blue, purple);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-    /* 🌊 Color Splash Animation */
-    @keyframes splashExpand {
-        0% { transform: scale(0); opacity: 1; }
-        100% { transform: scale(3); opacity: 0; }
-    }
+        .next-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.7);
+        }
 
-    /* 🖱️ Clickable Button */
-    .next-button {
-    font-size: 30px;
-    padding: 20px 40px;
-    background: linear-gradient(to right, red, yellow, green, blue, purple);
-    color: white;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: transform 0.2s, box-shadow 0.2s;
+        /* 🎆 Firework Particle */
+        .firework {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: red;
+            border-radius: 50%;
+            opacity: 1;
+            animation: explode 1s ease-out forwards;
+        }
 
-    /* Ensure it appears above everything */
-    position: relative;
-    z-index: 10;
-}
+        /* 🌟 Firework Burst Animation */
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
 
-.next-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.7);
-}
-
-  </style>
+    </style>
 </head>
 <body>
 
+    <!-- Centered Container for Text & Button -->
     <div class="container">
-        <div class="happy-holi">Happy Holi</div>
+        <div class="happy-holi">Wish You a <br> Very <br> Happy Holi</div>
         <a href="AndroidMedium1.html">
             <button class="next-button">Message For You</button>
         </a>
     </div>
 
     <script>
-        document.body.addEventListener('click', function(e) {
-    for (let i = 0; i < 15; i++) { // Create multiple particles
-        const splash = document.createElement('div');
-        splash.className = 'color-splash';
+        function createFireworkBurst() {
+            const numParticles = 25; // Number of particles per burst
+            const fireworkCenterX = Math.random() * window.innerWidth;
+            const fireworkCenterY = Math.random() * window.innerHeight * 0.8; // Avoid bottom overlap
 
-        let randomSize = Math.floor(Math.random() * 20) + 10; // Random size for variation
-        let randomX = (Math.random() - 0.5) * 300; // Spread horizontally
-        let randomY = (Math.random() - 0.5) * 300; // Spread vertically
-        let randomColor = `hsl(${Math.random() * 360}, 100%, 50%)`; // Random bright colors
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement("div");
+                particle.classList.add("firework");
 
-        splash.style.width = `${randomSize}px`;
-        splash.style.height = `${randomSize}px`;
-        splash.style.backgroundColor = randomColor;
-        splash.style.left = `${e.clientX}px`;
-        splash.style.top = `${e.clientY}px`;
+                // Random color selection
+                let colors = ["red", "orange", "yellow", "green", "blue", "purple", "pink", "white"];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
 
-        document.body.appendChild(splash);
+                // Position at explosion center
+                particle.style.left = `${fireworkCenterX}px`;
+                particle.style.top = `${fireworkCenterY}px`;
+                particle.style.position = "absolute";
 
-        // Animate splash movement
-        splash.animate([
-            { transform: `translate(0, 0) scale(1)`, opacity: 1 },
-            { transform: `translate(${randomX}px, ${randomY}px) scale(3)`, opacity: 0 }
-        ], {
-            duration: 1000,
-            easing: 'ease-out',
-            fill: 'forwards'
-        });
+                document.body.appendChild(particle);
 
-        // Remove splash after animation
-        setTimeout(() => {
-            splash.remove();
-        }, 1000);
-    }
-});
+                // Random angle and speed
+                let angle = Math.random() * 2 * Math.PI; // 0 to 360 degrees in radians
+                let speed = Math.random() * 100 + 50; // Particle burst speed
 
+                // Animate explosion outward
+                particle.animate([
+                    { transform: "translate(0, 0) scale(1)", opacity: 1 },
+                    { transform: `translate(${Math.cos(angle) * speed}px, ${Math.sin(angle) * speed}px) scale(2)`, opacity: 0 }
+                ], {
+                    duration: 1000,
+                    easing: "ease-out",
+                    fill: "forwards"
+                });
+
+                // Remove after animation
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            }
+        }
+
+        // 💥 Continuously create firework bursts every 700 milliseconds
+        setInterval(() => {
+            createFireworkBurst();
+        }, 700);
     </script>
 
 </body>
