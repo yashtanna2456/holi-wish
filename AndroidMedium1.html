@@ -1,93 +1,178 @@
-<div class="android-medium-1">
-  <img class="color-1" src="color-10.svg"/>
-  <p class="happy-holi">
-    A colorful message,<br>
-    to a colorful person,<br>
-    For a Colorful day,<br>
-    in a colorful way,<br>
-    as a pray,<br>
-    that the colorful ray,<br>
-    may forever stay.
-</p>
-
-<h1 class="happy-holi">Happy Holi!!</h1>
-
-</div>
-
-<!-- Right Side: Image -->
-<div class="image-container">
-  <img src="color-10.svg" alt="Holi Celebration">
-</div>
-</div>
-
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <style>
-    /* Apply background image */
-    .android-medium-1 {
-      background-image: url('color.jpg');  /* Make sure this file exists */
-      background-size: cover;
-      background-position: center;
-      width: 100vw;  /* Full screen width */
-      height: 100vh; /* Full screen height */
-      display: flex;
-      justify-content: center;
-      align-items: left;
-      flex-direction: column;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: left;
-      padding-left: 80px;
-    }
-
-    .color-1 {
-    display: none; /* Hide the image if it's not needed */
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
-
-.content {
-    text-align: center; /* Centers content */
-    max-width: 600px; /* Adjust width if needed */
-    margin: 400px; /* Centers content on the page */
-}
-
-/* 🎨 Stylish Paragraph */
-.paragraph {
-    font-size: 10px; /* Bigger font size */
-    font-family: 'Dancing Script', cursive; /* Cursive handwriting */
-    color: white;
-    line-height: 0.5;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Holi Celebration</title>
     
-}
+    <style>
+        /* 🎯 Full-Page Container */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100vw; /* Full width */
+            height: 100vh; /* Full height */
+            padding: 50px;
+            background-image: url('color.jpg'); /* Background Image */
+            background-size: cover;
+            background-position: center;
+            position: relative; /* Ensures canvas stays on top */
+            overflow: hidden; /* Prevents unwanted scrolling */
+        }
 
-/* 🎨 Stylish Heading */
-.happy-holi {
-    font-size: 40px; /* Bigger size */
-    font-family: 'Dancing Script', cursive; /* Cursive handwriting */
-    font-weight: bold;
-    color: yellow;
-    text-transform: uppercase;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
-}
+        /* 🎨 Left Side: Text Section */
+        .android-medium-1 {
+            width: 50%; /* Takes half of the screen */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: yellow;
+            font-family: Arial, sans-serif;
+            text-align: left;
+            padding: 50px;
+        }
 
+        /* 🎨 Stylish Text */
+        .happy-holi {
+            font-size: 40px;
+            font-family: 'Dancing Script', cursive;
+            font-weight: bold;
+            color: yellow;
+            text-transform: uppercase;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+        }
 
-/* Right Side Image Styling */
-.image-container {
-    max-width: 40%;
+        /* 🎯 Right Side: Image */
+        .image-container {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-}
+        .image-container img {
+            width: 80%;
+            max-width: 400px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
 
-.image-container img {
-    width: 100%; /* Responsive */
-    height: auto;
-    border-radius: 20px; /* Optional: Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for effect */
-}
-
-
-
-
-  </style>
+        /* 🎆 Full-Screen Canvas for Crackers */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none; /* Allows clicking through */
+        }
+    </style>
 </head>
 
+<body>
+    <!-- 🎨 Flex Container for Left and Right Section -->
+    <div class="container">
+        <!-- Left Side: Text Content -->
+        <div class="android-medium-1">
+            <p class="happy-holi">
+                A colorful message,<br>
+                to a colorful person,<br>
+                For a Colorful day,<br>
+                in a colorful way,<br>
+                as a pray,<br>
+                that the colorful ray,<br>
+                may forever stay.
+            </p>
+            <h1 class="happy-holi">Happy Holi!!</h1>
+        </div>
+
+        <!-- Right Side: Image -->
+        <div class="image-container">
+            <img src="krishna.jpg" alt="Holi Celebration">
+        </div>
+    </div>
+
+    <!-- 🎆 Crackers Animation Canvas -->
+    <canvas id="holiCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById("holiCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+
+        // 🌟 Particle class
+        class Particle {
+            constructor(x, y, color, size, velocity) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.size = size;
+                this.velocity = velocity;
+                this.alpha = 1; // Opacity
+            }
+
+            update() {
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                this.alpha -= 0.02; // Fade out
+            }
+
+            draw() {
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        // 🌈 Function to create Holi color bursts at random positions
+        function createRandomParticles() {
+            let colors = ["red", "blue", "yellow", "green", "pink", "purple", "orange"];
+            let x = Math.random() * canvas.width;
+            let y = Math.random() * canvas.height;
+            for (let i = 0; i < 30; i++) { // Number of particles
+                let color = colors[Math.floor(Math.random() * colors.length)];
+                let size = Math.random() * 6 + 2; // Random size
+                let velocity = {
+                    x: (Math.random() - 0.5) * 5, // Random movement
+                    y: (Math.random() - 0.5) * 5
+                };
+                particles.push(new Particle(x, y, color, size, velocity));
+            }
+        }
+
+        // 🎞️ Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle, index) => {
+                if (particle.alpha <= 0) {
+                    particles.splice(index, 1); // Remove faded particles
+                } else {
+                    particle.update();
+                    particle.draw();
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+
+        // 🚀 Function to continuously trigger Holi crackers
+        function startHoliCrackers() {
+            setInterval(() => {
+                createRandomParticles();
+            }, 1000); // Every second, a new burst
+        }
+
+        animate(); // Start animation loop
+        startHoliCrackers(); // Start continuous crackers
+    </script>
+</body>
+</html>
